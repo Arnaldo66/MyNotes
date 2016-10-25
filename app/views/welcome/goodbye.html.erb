@@ -1,0 +1,8 @@
+<h1>Goodbye</h1>
+
+
+<%= form_tag(hello_welcome_path, :method => :get) do %>
+	<%= label_tag(:message, "Message :") %>
+	<%= text_field_tag(:message) %>
+	<%= submit_tag("submit") %>
+<% end %>

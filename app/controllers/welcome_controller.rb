@@ -1,6 +1,9 @@
 class WelcomeController < ApplicationController
 
 	def hello
-		@message = "Hello with a variable"
+		@message = params[ :message ]
+	end
+
+	def goodbye
 	end
 end
