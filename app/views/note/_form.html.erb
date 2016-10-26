@@ -1,7 +1,5 @@
-<%= form_for @note do |f| %>
-	<%= f.label(:title, "Title :") %>
-	<%= f.text_field(:title) %>
-	<%= f.label(:content, "Content :") %>
-	<%= f.text_area(:content) %>
-	<%= f.submit("Submit") %>
+<%= simple_form_for @note do |f| %>
+	<%= f.input :title %>
+	<%= f.input :content %>
+	<%= f.button :submit %>
 <% end %>

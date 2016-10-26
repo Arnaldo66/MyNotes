@@ -23,8 +23,12 @@ class NoteController < ApplicationController
 	end
 
 	def create
-		@note = Note.create(user_params)
-		redirect_to root_path
+		@note = Note.new(user_params)
+		if @note.save
+			redirect_to root_path
+		else
+			render :new
+		end
 	end
 
 	def edit
@@ -33,8 +37,11 @@ class NoteController < ApplicationController
 
 	def update
 		@note = Note.find(params[:id])
-		@note.update(user_params)
-		redirect_to root_path
+		if @note.update(user_params)
+			redirect_to root_path
+		else
+			render :edit
+		end
 	end
 
 end
