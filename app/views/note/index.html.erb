@@ -1,33 +1,32 @@
+<h1>Listing notes</h1>
 
+<div class="search">
+  <%= form_tag note_search_path, :method => "get", :class => "form-inline", :role => "search" do %>
+    <div class="form-group">
+      <%= text_field_tag :keyword, @keyword, :class => "form-control" %>
+    </div>
+    <%= submit_tag "Search", :class => "btn btn-default" %>
+  <% end %>
+</div>
 
-
-<%= form_tag(note_search_path, :method => :get) do %>
-	<%= label_tag(:keyword, "Recherche :") %>
-	<%= text_field_tag(:keyword,@keyword) %>
-	<%= submit_tag("search") %>
-<% end %>
-
-
-
-
-<table>
-	<tr>
-		<th>Titre</th>
-		<th>Content</th>
-		<th>link</th>
-		<th>edit</th>
-	</tr>
-	<% @notes.each do |note| %>
-		<tr>
-			<td><%= note.title %></td>
-			<td><%= note.content %></td>
-			<td><%= link_to "show", note %></td>
-			<td><%= link_to "edit", note_edit_path(note) %></td>
-		</tr>
-	<% end %>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @notes.each do |note| %>
+    <tr>
+      <td><%= note.title %></td>
+      <td><%= truncate(note.content) %></td>
+      <td><%= link_to 'Show', note %></td>
+      <td><%= link_to 'Edit', note_edit_path(note) %></td>
+      <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
 </table>
 
-
-<%= link_to "New note", note_new_path %>
-
 <%= paginate @notes %>
+
+<%= link_to 'New Note', note_new_path, :class => "btn btn-default btn-lg" %>
+

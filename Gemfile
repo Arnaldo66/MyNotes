@@ -32,9 +32,12 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'kaminari' 
+gem 'kaminari-bootstrap'
 
 # voir cocoon pour gérer les many to many en modifiant le wrapper. Il utilise jquery
 gem 'simple_form'
+
+gem 'bootstrap-sass'
 
 
 group :development, :test do

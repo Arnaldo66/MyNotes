@@ -10,7 +10,7 @@ class NoteController < ApplicationController
 
 	def search
 		@keyword = params[:keyword]
-		@notes = Note.search(@keyword)
+		@notes = Note.search(@keyword).page(params[:page])
 		render "index"
 	end
 
