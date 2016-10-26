@@ -1,7 +1,6 @@
-<%= form_for @note do |f| %>
-	<%= f.label(:title, "Title :") %>
-	<%= f.text_field(:title) %>
-	<%= f.label(:content, "Content :") %>
-	<%= f.text_area(:content) %>
-	<%= f.submit("Submit") %>
-<% end %>
+<h1>Edit note</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @note %>
+<%= link_to 'Back', note_path %>
