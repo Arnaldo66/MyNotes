@@ -1,13 +1,31 @@
 
+
+
+<%= form_tag(note_search_path, :method => :get) do %>
+	<%= label_tag(:keyword, "Recherche :") %>
+	<%= text_field_tag(:keyword,@keyword) %>
+	<%= submit_tag("search") %>
+<% end %>
+
+
+
+
 <table>
 	<tr>
 		<th>Titre</th>
 		<th>Content</th>
+		<th>link</th>
+		<th>edit</th>
 	</tr>
 	<% @notes.each do |note| %>
 		<tr>
 			<td><%= note.title %></td>
 			<td><%= note.content %></td>
+			<td><%= link_to "show", note %></td>
+			<td><%= link_to "edit", note_edit_path(note) %></td>
 		</tr>
 	<% end %>
 </table>
+
+
+<%= link_to "New note", note_new_path %>
