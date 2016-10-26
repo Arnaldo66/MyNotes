@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get  "notes/new" ,to: "note#new", as: :note_new
   get  "notes/:id/edit" ,to: "note#edit", as: :note_edit
   get  "notes/:id" ,to: "note#show", as: :note
+  delete  "notes/:id" ,to: "note#destroy"
   post  "notes" ,to: "note#create"
   patch  "notes/:id" ,to: "note#update", as: :note_update 
 end
