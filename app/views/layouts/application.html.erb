@@ -15,10 +15,29 @@
           <div class="navbar-header">
             <%= link_to 'MyNotes', root_path, :class => "navbar-brand" %>
           </div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.name, edit_user_registration_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
+        </ul>
         </div>
+        
       </div>
 
       <div class="container">
+
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success"><%= flash[:notice]%></div>
+        <% end %>
+
+        <% if flash[:alert].present? %>
+          <div class="alert alert-danger"><%= flash[:alert]%></div>
+        <% end %>
+
         <%= yield %>
       </div>
 </div>

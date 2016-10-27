@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+	skip_before_action :authenticate_user!, :only => [:index, :show, :search]
 
 	def index
 		@notes = Note.page(params[:page])
@@ -24,7 +25,9 @@ class NotesController < ApplicationController
 
 	def create
 		@note = Note.new(user_params)
+		@note.user = current_user
 		if @note.save
+			flash[:notice] = "You've create a new note"
 			redirect_to root_path
 		else
 			render :new
@@ -38,6 +41,7 @@ class NotesController < ApplicationController
 	def update
 		@note = Note.find(params[:id])
 		if @note.update(user_params)
+			flash[:notice] = "You've update a note"
 			redirect_to root_path
 		else
 			render :edit
