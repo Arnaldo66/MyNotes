@@ -1,6 +1,8 @@
 class Note < ApplicationRecord
 	paginates_per 3
 
+	belongs_to :user
+
 	validates_presence_of :title, :content
 
 	def self.search(keyword)
