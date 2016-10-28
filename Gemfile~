@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'kaminari' 
 gem 'kaminari-bootstrap'
 gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 # voir cocoon pour gérer les many to many en modifiant le wrapper. Il utilise jquery
 gem 'simple_form'
